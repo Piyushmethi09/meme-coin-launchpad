@@ -75,3 +75,4 @@ pub struct InitializeAdmin<'info> {
     pub admin: AccountInfo<'info>,
     pub system_program: Program<'info, System>,
 }
+

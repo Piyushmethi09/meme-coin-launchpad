@@ -16,3 +16,11 @@ pub struct CreateMetadata<'info> {
     #[account(mut)]
     pub creator: Signer<'info>,
 }
+
+// Token metadata account
+// #[account]
+// pub struct TokenMetadata {
+//     pub name: String,
+//     pub symbol: String,
+//     pub uri: String, // Off-chain metadata URI
+// }

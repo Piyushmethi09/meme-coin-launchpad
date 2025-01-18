@@ -53,4 +53,10 @@ pub enum TokenError {
     
     #[msg("An unknown error occurred.")]
     UnknownError,
+
+    #[msg("Insufficient funds for minting fee.")]
+    InsufficientFunds,
+    
+    #[msg("Minting exceeds the maximum token supply.")]
+    MaxSupplyExceeded,
 }
