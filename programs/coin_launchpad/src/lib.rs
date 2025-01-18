@@ -1,6 +1,9 @@
 use anchor_lang::prelude::*;
 use anchor_spl::token::{self, Mint, Token, TokenAccount};
 use solana_program::pubkey::Pubkey;
+pub mod admin;
+
+use admin::*;
 
 declare_id!("4EAQ6275rL3DRA7VAc8mmC6P8xySbokTbSrEo6irBpy2");
 
@@ -49,6 +52,29 @@ pub mod meme_coin_launchpad {
 
         Ok(())
     }
+
+    pub fn initialize_admin(ctx: Context<InitializeAdmin>, treasury_wallet: Pubkey) -> Result<()> {
+        let admin_config = &mut ctx.accounts.admin_config;
+        admin_config.admin = *ctx.accounts.admin.key;
+        admin_config.treasury_wallet = treasury_wallet;
+        admin_config.minting_fee = 10_000_000; // Default minting fee: 0.01 SOL
+        admin_config.trading_fee = 100;        // Default trading fee: 1%
+        admin_config.paused = false;
+        Ok(())
+    }
+
+    pub fn update_treasury(ctx: Context<UpdateTreasury>, new_treasury: Pubkey) -> Result<()> {
+        update_treasury(ctx, new_treasury)
+    }
+
+    pub fn update_minting_fee(ctx: Context<UpdateMintingFee>, new_fee: u64) -> Result<()> {
+        update_minting_fee(ctx, new_fee)
+    }
+
+    pub fn pause_contract(ctx: Context<PauseContract>, pause: bool) -> Result<()> {
+        pause_contract(ctx, pause)
+    }
+}
 
     // Migration function (tokens to Raydium DEX)
     pub fn migrate_to_raydium(ctx: Context<MigrateToRaydium>, nonce: u8) -> Result<()> {
