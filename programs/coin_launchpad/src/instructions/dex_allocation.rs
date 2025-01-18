@@ -32,3 +32,4 @@ pub struct MigrateToRaydium<'info> {
     pub token_program: Program<'info, token::Token>,
     pub market_cap: Account<'info, MarketCap>,
 }
+

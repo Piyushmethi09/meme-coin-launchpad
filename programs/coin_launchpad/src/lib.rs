@@ -2,6 +2,9 @@ use anchor_lang::prelude::*;
 use instructions::{mint_tokens, trading_fee, dex_allocation, safe_badge, takeover, ownership, swap, admin};
 use state::{bonding_curve, treasury, token_metadata};
 use utils::*;
+// pub mod admin;
+
+// use admin::*;
 
 
 declare_id!("4EAQ6275rL3DRA7VAc8mmC6P8xySbokTbSrEo6irBpy2");
@@ -9,6 +12,10 @@ declare_id!("4EAQ6275rL3DRA7VAc8mmC6P8xySbokTbSrEo6irBpy2");
 #[program]
 pub mod wybe_launchpad {
     use super::*;
+
+    pub fn admin(ctx: Context<Admin>) -> Result<()> {
+        admin::manage(ctx)
+    }
 
     pub fn mint_tokens(ctx: Context<MintTokens>, amount: u64) -> Result<()> {
         mint_tokens::mint(ctx, amount)
@@ -18,8 +25,12 @@ pub mod wybe_launchpad {
         trading_fee::apply_fee(ctx, amount)
     }
 
-    pub fn dex_allocation(ctx: Context<DexAllocation>, amount: u64) -> Result<()> {
-        dex_allocation::allocate(ctx, amount)
+    // pub fn dex_allocation(ctx: Context<DexAllocation>, amount: u64) -> Result<()> {
+    //     dex_allocation::allocate(ctx, amount)
+    // }
+
+    pub fn migrate_to_raydium(ctx: Context<MigrateToRaydium>, amount: u64) -> Result<()> {
+        dex_allocation::migrate_to_raydium(ctx, amount)
     }
 
     pub fn safe_badge(ctx: Context<SafeBadge>, amount: u64) -> Result<()> {
@@ -38,9 +49,6 @@ pub mod wybe_launchpad {
         swap::execute(ctx, amount)
     }
 
-    pub fn admin(ctx: Context<Admin>) -> Result<()> {
-        admin::manage(ctx)
-    }
 }
 
 

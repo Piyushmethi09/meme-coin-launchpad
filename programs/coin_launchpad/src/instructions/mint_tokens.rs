@@ -131,6 +131,7 @@ pub struct MintTokens<'info> {
     pub mint_authority: AccountInfo<'info>,
     pub token_program: Program<'info, Token>,
     pub system_program: Program<'info, System>,
+    #[account(mut)]
 }
 // #[derive(Accounts)]
 // pub struct RenounceOwnership<'info> {
