@@ -10,3 +10,12 @@ pub fn swap_sol_to_token(ctx: Context<Swap>, amount: u64) -> Result<()> {
 
     Ok(())
 }
+// pub fn swap<'info>(
+//     ctx: Context<'_, '_, '_, 'info, Swap<'info>>,
+//     amount: u64,
+//     direction: u8,
+//     min_out: u64,
+// ) -> Result<()> {
+//     ctx.accounts
+//         .process(amount, direction, min_out, ctx.bumps.bonding_curve)
+// }

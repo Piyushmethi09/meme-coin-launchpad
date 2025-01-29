@@ -1,0 +1,6 @@
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[programs.localnet]
+meme_token_launchpad = "8MzVk3kK5sNRppJMLGyeTdjBcQ6y6Rz8ewGPqahggBky"
